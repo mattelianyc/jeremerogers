@@ -173,7 +173,10 @@ export function BrandHeroParallax() {
     (100 - HERO_BLACK_PANEL_INITIAL_BOTTOM_COVERAGE) * overlayCoverProgress;
   const blackPanelClipPath = `polygon(0 0, ${blackPanelTopCoverage}% 0, ${blackPanelBottomCoverage}% 100%, 0 100%)`;
   const redPanelClipPath = `polygon(${blackPanelTopCoverage}% 0, 100% 0, 100% 100%, ${blackPanelBottomCoverage}% 100%)`;
-  const terminalCommandText = CATEGORY_WORDS.join(" ").replaceAll(", ", ", ");
+  const terminalCommandText =
+    viewportWidth < 768
+      ? CATEGORY_WORDS.join("\n")
+      : CATEGORY_WORDS.join(" ").replaceAll(", ", ", ");
   const terminalPromptText = HERO_TERMINAL_PROMPT;
   const enterWordmarkCompletionDurationMs = Math.round(
     HERO_ENTER_WORDMARK_COMPLETION_DURATION * 1000

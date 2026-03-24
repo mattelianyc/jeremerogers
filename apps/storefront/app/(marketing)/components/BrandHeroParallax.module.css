@@ -167,7 +167,7 @@
   letter-spacing: 0.02em;
   white-space: nowrap;
   color: rgb(255 255 255);
-  -webkit-text-stroke: 1.86px rgb(139 30 45 / 0.5);
+  -webkit-text-stroke: 0.86px rgb(139 30 45 / 0.36);
   text-shadow:
     1.2px 0 0 rgb(139 30 45 / 0.28),
     -1.2px 0 0 rgb(139 30 45 / 0.14),
