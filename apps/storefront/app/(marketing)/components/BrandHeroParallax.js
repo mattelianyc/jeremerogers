@@ -19,6 +19,8 @@ import {
   HERO_CONTENT_REVEAL_DURATION,
   HERO_MEDIA_SETTLE_DURATION,
   HERO_OVERLAY_COVER_PROGRESS,
+  HERO_OVERLAY_SOLID_END_PROGRESS,
+  HERO_OVERLAY_SOLID_START_PROGRESS,
   HERO_OVERLAY_REVEAL_DELAY,
   HERO_OVERLAY_REVEAL_DURATION,
   HERO_TERMINAL_PROMPT,
@@ -39,19 +41,21 @@ export function BrandHeroParallax() {
   const enterTransitionTimeoutReferences = useRef([]);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(900);
+  const [viewportWidth, setViewportWidth] = useState(1440);
   const [isHeroRevealReady, setIsHeroRevealReady] = useState(false);
   const [enterTransitionPhase, setEnterTransitionPhase] = useState("idle");
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    function updateViewportHeight() {
+    function updateViewportDimensions() {
       setViewportHeight(window.innerHeight);
+      setViewportWidth(window.innerWidth);
     }
 
-    updateViewportHeight();
-    window.addEventListener("resize", updateViewportHeight);
+    updateViewportDimensions();
+    window.addEventListener("resize", updateViewportDimensions);
     return () => {
-      window.removeEventListener("resize", updateViewportHeight);
+      window.removeEventListener("resize", updateViewportDimensions);
     };
   }, []);
 
@@ -149,9 +153,21 @@ export function BrandHeroParallax() {
     effectiveScrollProgress / HERO_OVERLAY_COVER_PROGRESS,
     1
   );
+  const blackPanelInitialTopCoverage =
+    viewportWidth < 1024 ? 74 : HERO_BLACK_PANEL_INITIAL_TOP_COVERAGE;
+  const heroOverlaySolidOpacity = shouldReduceMotion
+    ? 0
+    : Math.min(
+        Math.max(
+          (effectiveScrollProgress - HERO_OVERLAY_SOLID_START_PROGRESS) /
+            (HERO_OVERLAY_SOLID_END_PROGRESS - HERO_OVERLAY_SOLID_START_PROGRESS),
+          0
+        ),
+        1
+      );
   const blackPanelTopCoverage =
-    HERO_BLACK_PANEL_INITIAL_TOP_COVERAGE +
-    (100 - HERO_BLACK_PANEL_INITIAL_TOP_COVERAGE) * overlayCoverProgress;
+    blackPanelInitialTopCoverage +
+    (100 - blackPanelInitialTopCoverage) * overlayCoverProgress;
   const blackPanelBottomCoverage =
     HERO_BLACK_PANEL_INITIAL_BOTTOM_COVERAGE +
     (100 - HERO_BLACK_PANEL_INITIAL_BOTTOM_COVERAGE) * overlayCoverProgress;
@@ -362,6 +378,12 @@ export function BrandHeroParallax() {
                   ease: [0.16, 1, 0.3, 1]
                 }
               }}
+            />
+            <motion.div
+              className={styles.heroOverlaySolidRight}
+              initial={false}
+              animate={{ opacity: heroOverlaySolidOpacity }}
+              transition={{ duration: 0.12, ease: "linear" }}
             />
           </div>
 

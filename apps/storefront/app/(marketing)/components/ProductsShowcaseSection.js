@@ -34,6 +34,19 @@ export function ProductsShowcaseSection({ products }) {
     ? products.filter((product) => product.id === selectedProductId)
     : products;
 
+  function handleProductSelect(productId) {
+    const sectionElement = sectionReference.current;
+
+    if (sectionElement) {
+      window.scrollTo({
+        top: sectionElement.offsetTop,
+        behavior: "auto"
+      });
+    }
+
+    setSelectedProductId(productId);
+  }
+
   return (
     <section
       id="marketing-products-section"
@@ -61,7 +74,7 @@ export function ProductsShowcaseSection({ products }) {
               totalProducts={visibleProducts.length}
               scrollProgress={scrollYProgress}
               isSelected={selectedProductId === product.id}
-              onSelect={() => setSelectedProductId(product.id)}
+              onSelect={() => handleProductSelect(product.id)}
               onClose={() => setSelectedProductId(null)}
             />
           ))}
