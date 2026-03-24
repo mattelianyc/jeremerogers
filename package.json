@@ -1,0 +1,17 @@
+{
+  "name": "jereme",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @jereme/storefront",
+    "build": "npm run build --workspace @jereme/storefront",
+    "start": "npm run start --workspace @jereme/storefront",
+    "lint": "npm run lint --workspace @jereme/storefront"
+  }
+}

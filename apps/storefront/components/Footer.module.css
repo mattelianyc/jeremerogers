@@ -1,0 +1,115 @@
+.footer {
+  position: relative;
+  z-index: 20;
+  background: #050505;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1680px;
+  padding: 4.5rem 1.25rem 2rem;
+}
+
+.topGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.brandBlock {
+  max-width: 22rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+}
+
+.brandName {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 0.95;
+  letter-spacing: 0.16em;
+}
+
+.brandDescription {
+  margin: 1.5rem 0 0;
+  max-width: 20rem;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: rgb(255 255 255 / 0.68);
+}
+
+.socialBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.socialLabel {
+  margin: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.46);
+}
+
+.socialLink {
+  font-size: clamp(1.35rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  color: rgb(255 255 255 / 0.88);
+  transition: color 200ms ease, opacity 200ms ease;
+}
+
+.socialLink:hover {
+  color: rgb(255 255 255 / 1);
+}
+
+.bottomRow {
+  margin-top: 4.5rem;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  padding-top: 1rem;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.42);
+}
+
+.wordmarkWrap {
+  margin-top: 3rem;
+  overflow: hidden;
+}
+
+.wordmark {
+  margin: 0;
+  font-size: clamp(4.5rem, 16vw, 14rem);
+  line-height: 0.82;
+  letter-spacing: 0.08em;
+  color: rgb(255 255 255 / 0.96);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 5.5rem 2.5rem 2.25rem;
+  }
+
+  .topGrid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .socialBlock {
+    align-items: start;
+    justify-self: end;
+  }
+}

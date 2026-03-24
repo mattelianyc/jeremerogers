@@ -1,0 +1,11 @@
+{
+  "name": "@jereme/ui",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./button": "./src/Button.js",
+    "./icon-button": "./src/IconButton.js"
+  }
+}

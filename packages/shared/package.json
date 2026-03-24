@@ -1,0 +1,17 @@
+{
+  "name": "@jereme/shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./shopify": "./shopify/index.js",
+    "./shopify/env": "./shopify/env.js",
+    "./shopify/products": "./shopify/products.js",
+    "./shopify/checkout": "./shopify/checkout.js",
+    "./formatting": "./formatting/index.js"
+  },
+  "dependencies": {
+    "graphql": "^16.13.1",
+    "graphql-request": "^7.3.1"
+  }
+}
